@@ -38,10 +38,11 @@
     "accountId": "5a457816-b2b0-491f-9908-9fc4d405b660"
   }
 }]]></component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 3,
-  &quot;fromUser&quot;: false
-}</component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "00000000",
+  "associatedIndex": 3,
+  "fromUser": false
+}]]></component>
   <component name="ProjectId" id="3EHUR3QKzJU29EHd8Yxb0RptKL8" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -59,7 +60,6 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "ai.playground.ignore.import.keys.banner.in.settings": "true",
-    "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "list.type.of.created.stylesheet": "CSS",
     "vue.rearranger.settings.migration": "true"
@@ -94,7 +94,7 @@
       <workItem from="1779842461229" duration="3420000" />
       <workItem from="1779845905166" duration="71000" />
       <workItem from="1779846016297" duration="37000" />
-      <workItem from="1779920730356" duration="15321000" />
+      <workItem from="1779920730356" duration="16332000" />
     </task>
     <task id="LOCAL-00001" summary="primeiro commit">
       <option name="closed" value="true" />
@@ -152,7 +152,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780100725475</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="refinamento da tabela">
+      <option name="closed" value="true" />
+      <created>1780100948144</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1780100948144</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
