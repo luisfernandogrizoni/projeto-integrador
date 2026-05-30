@@ -8,3 +8,30 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+
+# --- AMBIENTE VIRTUAL (Pesado e Desnecessário) ---
+# Nunca suba a pasta .venv. Quem baixar seu código cria a própria.
+.venv/
+venv/
+env/
+
+# --- SEGURANÇA (CRÍTICO) ---
+# Nunca suba suas senhas e chaves secretas!
+.env
+.flaskenv
+.env.local
+
+# --- IDE (Configurações Locais) ---
+# Arquivos do PyCharm (.idea) e VS Code (.vscode) são pessoais
+.idea/
+.vscode/
+*.swp
+
+# --- BANCO DE DADOS (Dados Locais) ---
+# Não queremos subir o banco de dados de teste/produção
+*.db
+*.sqlite3
+
+# --- FLASK (Instância e Logs) ---
+# A pasta instance costuma guardar o banco SQLite e configs locais
+instance/
