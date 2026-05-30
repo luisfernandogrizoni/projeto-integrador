@@ -1,0 +1,33 @@
+{# =====================================================================
+   MACRO: render_field
+   Objetivo: Padronizar a renderização de todos os inputs do sistema,
+   injetando automaticamente as classes BEM e lidando com erros de validação.
+   ===================================================================== #}
+{% macro render_field(field, wrapper_class='') %}
+    {# Container principal do campo aplicando o padrão BEM (Bloco) #}
+    <div class="l-row {{ wrapper_class }}" id="{{ field.name }}">
+
+        {{ field.label(class_="c-form-field__label") }}
+
+        {# 1. EXTRAÇÃO: Abre (kwargs) e retira qualquer classe extra que a tela tenha enviado (ex: mask-cpf). Se não houver, retorna vazio ''. #}
+        {% set classes_extras = kwargs.pop('class_', '') %}
+
+        {# CONCATENAÇÃO: Apenas a classe do input e com espaço no final! #}
+        {% set classes_finais = 'c-form-field__input ' ~ classes_extras %}
+
+
+        {# 3. INJEÇÃO: Renderiza o input HTML final passando a classe unificada (limpa de espaços extras via strip()) e o resto dos parâmetros da mochila (**kwargs) #}
+        {{ field(class_=classes_finais.strip(), **kwargs) }}
+
+        {# Bloco de validação: Se o backend WTForms recusar o dado, itera sobre os erros e exibe as mensagens abaixo do campo #}
+        {% if field.errors %}
+            {% for error in field.errors %}
+                <span class="error-message">{{ error }}</span>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endmacro %}
+
+
+
+

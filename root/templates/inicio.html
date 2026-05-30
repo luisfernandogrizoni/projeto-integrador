@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Gerador de Senhas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="l-form-layout">
+    {% from "_macros.html" import render_field %}
+            <div>
+                <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                  {% if messages %}
+                    <script>
+                      {% for category, message in messages %}
+                          {% for p in senhas %}
+                            Swal.fire({
+                                icon: '{{ category }}', // 'success' ou 'error' injetado direto do Python
+                                title: '{{ message }}',
+                                text: 'Senha para {{ p.finalidade }} gerada com sucesso!',
+                                timer: 3000, // Some sozinho após 3 segundos
+
+                              customClass: {
+                                  popup: "popup-estilo",
+                                  title: "title-estilo"
+                              }
+
+                            });
+                          {% endfor %}
+                      {% endfor %}
+                    </script>
+                  {% endif %}
+                {% endwith %}
+
+                <form method="POST" action="">
+                    <div class="l-form-layout">
+                     <div class="l-form-layout__header c-login-logo u-column">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" class="c-login-logo__image">
+                            </div>
+                        <div  class="l-form-layout__content">
+                            {{ form.hidden_tag() }}
+
+                            {{ render_field(form.tamanho, placeholder="Ex: 42") }}
+                            {{ render_field(form.finalidade, placeholder="Ex: Senha do G-Mail") }}
+
+                        </div>
+                        <div class="l-form-layout__footer">
+                            {{ form.botao_confirmacao(class_="c-btn c-btn--primary") }}
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="l-container">
+                <table class="c-table">
+                    <thead>
+                        <tr class="c-table__row c-table__row--header">
+                            <th class="c-table__cell c-table__cell--header">Data</th>
+                            <th class="c-table__cell c-table__cell--header">Finalidade</th>
+                            <th class="c-table__cell c-table__cell--header">Senha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for p in senhas %}
+                        <tr class="c-table__row">
+                            <td  class="c-table__cell">{{ p.data_hora | mask_data}}</td>
+                            <td  class="c-table__cell">{{ p.finalidade.title() }}</td>
+                            <td  class="c-table__cell">{{ p.senha }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
